@@ -1,4 +1,4 @@
-# from np_eval_img import eval_img
+from np_eval_img import eval_img
 import numpy as np
 import os
 
@@ -83,7 +83,7 @@ def get_metric(model_output_path, ground_truth_path, output_dir=None,
     if not os.path.isdir(ground_truth_path):
         raise NotADirectoryError("Path to grouth truth is not a directory")
     if output_dir is None:
-        output_dir = join_paths(model_output_path, "/eval_outputs/")
+        output_dir = join_paths("../data/", "/eval_outputs/")
     model_output_dir = os.listdir(model_output_path)
 
     n = len(model_output_dir)  # n = number of examples available
@@ -100,7 +100,7 @@ def get_metric(model_output_path, ground_truth_path, output_dir=None,
         model_output_file = join_paths(model_output_path, file)
         gt_file = join_paths(ground_truth_path, file_split[0] + '.mat')
         if not os.path.isfile(gt_file):
-            raise FileNotFoundError("No matching GT for model prediction: ", file_split[0])
+            raise FileNotFoundError("No matching GT for model prediction: ", gt_file)
 
         output_file = join_paths(output_dir, file_split[0] + "_eval.txt")
         # if os.path.isfile(output_file):  # If file already exists, skip
@@ -157,6 +157,6 @@ def get_metric(model_output_path, ground_truth_path, output_dir=None,
 
 
 if __name__ == "__main__":
-    model_output_path = "/home/vishnu234/Desktop/Interactive_Segmentation/data/prob/test"
-    ground_truth_path = "/home/vishnu234/Desktop/Interactive_Segmentation/data/gt/test"
+    model_output_path = "../data/prob/test"
+    ground_truth_path = "../data/gt/test"
     get_metric(model_output_path=model_output_path, ground_truth_path=ground_truth_path)

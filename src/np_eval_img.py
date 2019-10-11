@@ -3,7 +3,7 @@ import cv2
 from skimage import morphology
 import scipy.io
 from EdgeEval import EdgeEval
-from np_eval_dir import *
+# from np_eval_dir import *
 
 
 def join_paths(x, y):
@@ -122,5 +122,5 @@ if __name__ == "__main__":
     model_output_path_ = "../data/prob/test/2018.png"
     ground_truth_path_ = "../data/gt/test/2018.mat"
     T, cntR, sumR, cntP, sumP, V = (eval_img(model_output_path_, ground_truth_path_, thin=True))
-    R, P, F = computeRPF(cntR, sumR, cntP, sumP)
+    # R, P, F = computeRPF(cntR, sumR, cntP, sumP)
     print("Recall: ", R, "\nPrecision: ", P)
